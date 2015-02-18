@@ -1,41 +1,93 @@
-'use strict';
-
-var qs = require('querystring');
-var fs = require('q-io/fs');
-var parseurl = require('parseurl');
-var _ = require('underscore');
+var fs         = require('q-io/fs');
+var http       = require('http');
+var connect    = require('connect');
 var bodyParser = require('body-parser');
+var apimock    = require('apimock-middleware');
+var requestlog = require('./apiReporter-middleware');
+var log_loc = 'requestlog/'
 
-function reporter(log_location){
-  return function (req, res, next) {
-    var url = parseurl(req)
-      , query = qs.parse(url.query)
-      , info = {}
-      , timestamp = +(new Date())
-      , log_to
-      ;
+var app = connect();
 
-    info.method       = req.method; 
-    info.url          = url.pathname; 
-    info.body         = req.body; 
-    info.headers      = req.headers; 
-    info.query_string = query;
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.text());
+app.use(apimock('apimock.yml'));
+app.use(requestlog(log_loc));
 
-    log_to = log_location + timestamp+'-'+info.method+info.url.replace(/\//g, "\\") +'.json';
-    
-    // ignore __log entries
-    if(info.url.match('__log')){
-      next();
-    }else{
-      fs.write(log_to, JSON.stringify(info, null, "\t"))
-        .fail(function(err){
-          console.log(err);
-        })
-        .finally(function(info){
+app.use('/__log/reset', function(req, response, next){
+  fs.list(log_loc)
+    .catch(function(err){
+      console.log(err);
+    })
+    .then(function(files){
+      deleteThese(log_loc, files)
+        .then(function(message){
+          response.end(message);
           next();
         })
-    }
-  }
+        .catch(function(err){
+          response.end('there has been an error');
+          console.log(err.stack);
+          next();
+        })
+    })
+});
+
+app.use('/__log/history', function(req, response, next){
+  fs.list(log_loc)
+    .catch(function(err){
+      console.log(err);
+      next();
+    })
+    .then(function(files){
+      readThese(log_loc, files)
+        .catch(function(err){
+          console.log(err);
+          next();
+        })
+        .then(function(result){
+          response.end(JSON.stringify(result));
+          next();
+        });
+    });
+})
+
+app.use('/__log/', function(req, response, next){
+  fs.read('log-history.html')
+    .then(function(file){
+      response.end(file);
+      next();
+    });
+})
+
+http.createServer(app).listen(3000);
+console.log("mock app has been created");
+
+function readThese(loc, files, result){
+  result = (result||[]);
+  var file = files.shift();
+  return fs.isFile(loc+file)
+    .then(function(is_file){
+      console.log(loc+file, is_file);
+      if(is_file){
+        return fs.read(loc+file)
+             .then(function(data){
+               result.push(data);
+               return readThese(loc, files, result)
+             })
+      }else{
+        console.log(result);
+        return result
+      }
+    })
 }
 
-module.exports = reporter;
+function deleteThese(loc, files){
+  var file = files.shift();
+  return fs.remove(loc+file)
+           .then(function(){
+             return deleteThese(loc, files);
+           })
+           .catch(function(err){
+             return 'the log has been cleared';
+           })
+}
