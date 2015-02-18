@@ -3,15 +3,17 @@ var http       = require('http');
 var connect    = require('connect');
 var bodyParser = require('body-parser');
 var apimock    = require('apimock-middleware');
-var requestlog = require('./apiReporter-middleware');
-var log_loc = 'requestlog/'
+var requestlog = require('./lib/apiReporter-middleware');
+var log_loc = 'log/'
 
 var app = connect();
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.text());
-app.use(apimock('apimock.yml'));
+// need to decide which body parser to use
+//app.use(bodyParser.text({type: "!*+json"}));
+app.use(bodyParser.json());
 app.use(requestlog(log_loc));
+app.use(apimock('etc/apimock.yml'));
 
 app.use('/__log/reset', function(req, response, next){
   fs.list(log_loc)
@@ -52,7 +54,7 @@ app.use('/__log/history', function(req, response, next){
 })
 
 app.use('/__log/', function(req, response, next){
-  fs.read('log-history.html')
+  fs.read('lib/log-history.html')
     .then(function(file){
       response.end(file);
       next();

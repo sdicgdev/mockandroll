@@ -3,12 +3,11 @@
     method: GET
   response:
     status: 200
-    file: "json/users/<%= params.id %>.json"
+    file: "fixtures/<%= params.id %>.json"
 
 - request:
     url: /api/users
     method: POST
   response:
     status: "<%= body.name ? 201 : 422 %>"
-    file: "json/users/<%= body.name ? 'created' : 'failed' %>.json"
-
+    file: "fixtures/<%= body.name %>.json"
