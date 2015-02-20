@@ -70,6 +70,9 @@ module.exports = function(yml_file, port, log_loc){
         if(is_file){
           return fs.read(loc+file)
                .then(function(data){
+                 try{
+                   data = JSON.parse(data);
+                 }catch(err){ }
                  result.push(data);
                  return readThese(loc, files, result)
                })
