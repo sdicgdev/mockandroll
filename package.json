@@ -1,6 +1,6 @@
 {
   "name": "mockandroll",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "detailed access logging, intended for development purposes",
   "main": "index.js",
   "author": "Evan Short <evan@sdicg.com>",
@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://whtevn@bitbucket.org/sdicgdev/mockandroll.git"
+    "url": "https://github.com/sdicgdev/mockandroll.git"
   },
   "dependencies": {
     "body-parser": "^1.12.0",
