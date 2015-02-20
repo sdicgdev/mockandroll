@@ -1,0 +1,34 @@
+#!/usr/bin/env node
+
+var config = require('confoo')
+  , mockAndRoll = require('../index')
+  , default_settings = {
+      port: 3000
+    , api: 'apimock.yml'
+    , log: 'var/log/'
+    }
+  ;
+
+console.log("start");
+
+config
+  .get('mock-services.json', default_settings)
+  .catch(function(err){
+    console.log(err);
+    return default_settings
+  })
+  .then(function(conf){
+    console.log("got conf");
+    config
+      .find(conf.api)
+      .then(function(api_mock_file){
+        console.log("mock and roll");
+        mockAndRoll(api_mock_file, conf.port, conf.log);
+      })
+      .catch(function(err){
+        console.log(err.message);
+      })
+  })
+  .catch(function(err){
+    console.log(err.message);
+  })
