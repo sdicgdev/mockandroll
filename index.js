@@ -12,7 +12,7 @@ module.exports = function(yml_file, port, log_loc){
   app.use(bodyParser.json());
   app.use(requestlog(log_loc));
   app.use(apimock(yml_file));
-  app.use('/__log/reset/', function(req, response, next){
+  function reset(req, response, next){
     fs.list(log_loc)
       .catch(function(err){
         console.log(err);
@@ -29,9 +29,9 @@ module.exports = function(yml_file, port, log_loc){
             next();
           })
       })
-  });
+  }
 
-  app.use('/__log/history/', function(req, response, next){
+  function history(req, response, next){
     fs.list(log_loc)
       .catch(function(err){
         console.log(err);
@@ -48,14 +48,24 @@ module.exports = function(yml_file, port, log_loc){
             next();
           });
       });
-  })
+  }
 
   app.use('/__log/', function(req, response, next){
-    fs.read('lib/log-history.html')
-      .then(function(file){
-        response.end(file);
-        next();
-      });
+    if(req.url && req.url.match('history')){
+      history(req, response, next);
+    }else if(req.url && req.url.match('reset')){
+      reset(req, response, next);
+    }else{
+      fs.read(__dirname+'/lib/log-history.html')
+        .then(function(file){
+          response.end(file);
+          next();
+        })
+        .catch(function(err){
+          console.log(err);
+          console.log(err.stack);
+        });
+    }
   })
 
 
