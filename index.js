@@ -56,7 +56,7 @@ module.exports = function(yml_file, port, log_loc){
     }else if(req.url && req.url.match('reset')){
       reset(req, response, next);
     }else{
-      fs.read(__dirname+'/lib/log-history.html')
+      fs.read(__dirname+'/ui/index.html')
         .then(function(file){
           response.end(file);
           next();
