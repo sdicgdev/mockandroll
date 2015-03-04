@@ -77,6 +77,7 @@ module.exports = function(yml_file, port, log_loc){
     var file = files.shift();
     return fs.isFile(loc+file)
       .then(function(is_file){
+        console.log(file);
         if(is_file && !file.match(/(^|\/)\./)){
           return fs.read(loc+file)
                .then(function(data){
