@@ -1,6 +1,6 @@
 {
   "name": "mockandroll",
-  "version": "0.0.4-beta4",
+  "version": "0.0.4",
   "description": "detailed access logging, intended for development purposes",
   "main": "index.js",
   "author": "Evan Short <evan@sdicg.com>",
