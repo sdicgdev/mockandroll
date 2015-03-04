@@ -77,14 +77,15 @@ module.exports = function(yml_file, port, log_loc){
     var file = files.shift();
     return fs.isFile(loc+file)
       .then(function(is_file){
-        console.log(file);
-        if(is_file && !file.match(/(^|\/)\./)){
+        if(is_file){
           return fs.read(loc+file)
                .then(function(data){
                  try{
                    data = JSON.parse(data);
                  }catch(err){ }
-                 result.push(data);
+                 if(!file.match(/(^|\/)\./)){
+                   result.push(data);
+                  }
                  return readThese(loc, files, result)
                })
         }else{
