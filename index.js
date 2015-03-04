@@ -99,7 +99,7 @@ module.exports = function(yml_file, port, log_loc){
                 if(!file.match(/(^|\/)\./)){
                   return fs.remove(loc+file)
                 }
-              }
+              })
              .then(function(){
                return deleteThese(loc, files);
              })
