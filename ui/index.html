@@ -1,19 +1,58 @@
-
+<!doctype html>
 <html>
   <head>
     <title>Mock And Roll History</title>
 
     <!-- feature detection -->
-    <script src="bower_components/foundation/js/vendor/custom.modernizr.js"></script>
+    <script src="bower_components/foundation/js/vendor/modernizr.js"></script>
+    
+    <link rel="stylesheet" href="bower_components/foundation/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/foundation/css/foundation.css">
 
-    <link rel="stylesheet" href="assets/styles/app.css">
+    <!-- <link rel="stylesheet" href="assets/styles/app.css"> -->
   </head>
   <body
     ng-controller="MockAndRollCtl"
     ng-app="MockAndRollApp"
   >
     
-   
+    <section id="controls">
+      <div class="row no-margin">
+        <div class="large-12 columns"><label for="">Organization Name</label>
+          <!-- Org Drop Down -->
+          <select name="org" id="org">
+            <option value="option1">option 1</option>
+            <option value="option2">option 3</option>
+            <option value="option3">option 3</option>
+            <option value="option4">option 4</option>
+          </select>
+          <!-- / Org Drop Down -->
+        </div>
+      </div>
+      <div class="row no-margin">
+        <div class="large-4 columns">
+          <label for="">First Name</label>
+          <input ng-model="limit.first_name" type="text" placeholder="John/Jane">
+        </div>
+        <div class="large-4 columns">
+          <label for="">Last Name</label>
+          <input ng-model="limit.last_name" type="text" placeholder="Doe">
+        </div>
+        <div class="large-4 columns">
+          <button
+            ng-click="searchAllUsers(limit)"
+            type="button"
+            class="searchAllUsers button tiny"
+            ng-show="search.org_id === NULL">
+            Search
+          </button>
+        </div>
+        <div class="large-4 columns hide">
+          <label for="">Email</label>
+          <input ng-model="limit.email" type="text" placeholder="email@domain.com">
+        </div>
+      </div>
+    </section>
     <section id="data">
       
     </section>
