@@ -1,72 +1,22 @@
+
 <html>
   <head>
     <title>Mock And Roll History</title>
+
+    <!-- feature detection -->
+    <script src="bower_components/foundation/js/vendor/custom.modernizr.js"></script>
+
+    <link rel="stylesheet" href="assets/styles/app.css">
   </head>
   <body
     ng-controller="MockAndRollCtl"
     ng-app="MockAndRollApp"
   >
-    <h1>IT BEGINS</h1>
     
-    <section id="controls">
-      <div class="row no-margin">
-        <div class="large-12 columns"><label for="">Organization Name</label>
-          <!-- Org Drop Down -->
-          <ui-select
-            reset-search-input="true"
-            on-select="gotoOrg(search)"
-            ng-model="search.org_id">
-            <ui-select-match placeholder="Select an organization">{{$select.selected.org_name}}</ui-select-match>
-            <ui-select-choices repeat="org.org_id as org in orgs | filter: $select.search | orderBy: 'org_name'">
-              <div ng-bind-html="org.org_name | highlight: $select.search"></div>
-            </ui-select-choices>
-          </ui-select>
-          <!-- / Org Drop Down -->
-        </div>
-      </div>
-      <div class="row no-margin">
-        <div class="large-4 columns">
-          <label for="">First Name</label>
-          <input ng-model="limit.first_name" type="text" placeholder="John/Jane">
-        </div>
-        <div class="large-4 columns">
-          <label for="">Last Name</label>
-          <input ng-model="limit.last_name" type="text" placeholder="Doe">
-        </div>
-        <div class="large-4 columns">
-          <button
-            ng-click="searchAllUsers(limit)"
-            type="button"
-            class="searchAllUsers button tiny"
-            ng-show="search.org_id === NULL">
-            Search
-          </button>
-        </div>
-        <div class="large-4 columns hide">
-          <label for="">Email</label>
-          <input ng-model="limit.email" type="text" placeholder="email@domain.com">
-        </div>
-      </div>
-      <div class="no-margin" style="display:none;">
-        <div class="large-12 columns">
-          <button type="button" class="button tiny" ng-click="activateMerge = true" ng-show="activateMerge == false; users;">
-            Activate Account Merging
-          </button>
-          <!-- Merge Users Button -->
-          <button
-            ng-click="mergeUsers()"
-            type="button"
-            class="mergeAccount button tiny success"
-            ng-show="activateMerge == true">
-            Merge Accounts
-          </button>
-          <button type="button" class="mergeCancel button tiny alert" ng-click="activateMerge = cancel" ng-show="activateMerge == true">
-            Cancel
-          </button>
-        </div> 
-      </div>
+   
+    <section id="data">
+      
     </section>
-
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
