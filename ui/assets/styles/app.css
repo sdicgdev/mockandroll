@@ -1,0 +1,27 @@
+/*custom styles*/
+body {
+	background: #f9f9f9;
+}
+table tr td{
+	font-size: 12px;
+}
+
+table tr td.body {
+	overflow: scroll;
+	max-width: 400px;
+	word-wrap: break-word;
+}
+table tr td.headers{
+	overflow: scroll;
+	max-width: 400px;
+	word-wrap: break-word;
+}
+.button {
+	outline: 0;
+}
+.button.tiny {
+	padding: 4px 8px; 
+}
+.no-margin {
+	margin: 0;
+}

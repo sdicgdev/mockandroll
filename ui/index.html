@@ -9,52 +9,44 @@
     <link rel="stylesheet" href="bower_components/foundation/css/normalize.css">
     <link rel="stylesheet" href="bower_components/foundation/css/foundation.css">
 
-    <!-- <link rel="stylesheet" href="assets/styles/app.css"> -->
+    <link rel="stylesheet" href="assets/styles/app.css">
   </head>
   <body
     ng-controller="MockAndRollCtl"
     ng-app="MockAndRollApp"
   >
     
-    <section id="controls">
-      <div class="row no-margin">
-        <div class="large-12 columns"><label for="">Organization Name</label>
-          <!-- Org Drop Down -->
-          <select name="org" id="org">
-            <option value="option1">option 1</option>
-            <option value="option2">option 3</option>
-            <option value="option3">option 3</option>
-            <option value="option4">option 4</option>
-          </select>
-          <!-- / Org Drop Down -->
+    <section id="display-history">
+      <div class="row">
+        <div class="large-12 columns">
+          <h2>history log </h2>
+          <button class="button tiny no-margin" ng-click="clearHistory()" disabled>Clear History</button> (coming soon)
+          <table>
+            <thead>
+              <tr>
+                <th>url</th>
+                <th>method</th>
+                <th>headers</th>
+                <th>body</th>
+                <th>query</th>
+                <!-- <th>hash key</th> -->
+              </tr>
+            </thead>
+            <tr ng-repeat="item in history">
+              <!-- <td>{{item}}</td> -->
+              <td>{{item.url}}</td>
+              <td>{{item.method}}</td>
+              <td class="headers">{{item.headers}}</td>
+              <td class="body">
+                <button class="button tiny no-margin" ng-click="showBody = !showBody">Show</button>
+                <span ng-show="showBody">{{item.body}}</span>
+              </td>
+              <td>{{item.query_string}}</td>
+              <!-- <td>{{item.$$hashKey}}</td> -->
+            </tr>
+          </table>
         </div>
       </div>
-      <div class="row no-margin">
-        <div class="large-4 columns">
-          <label for="">First Name</label>
-          <input ng-model="limit.first_name" type="text" placeholder="John/Jane">
-        </div>
-        <div class="large-4 columns">
-          <label for="">Last Name</label>
-          <input ng-model="limit.last_name" type="text" placeholder="Doe">
-        </div>
-        <div class="large-4 columns">
-          <button
-            ng-click="searchAllUsers(limit)"
-            type="button"
-            class="searchAllUsers button tiny"
-            ng-show="search.org_id === NULL">
-            Search
-          </button>
-        </div>
-        <div class="large-4 columns hide">
-          <label for="">Email</label>
-          <input ng-model="limit.email" type="text" placeholder="email@domain.com">
-        </div>
-      </div>
-    </section>
-    <section id="data">
-      
     </section>
 
     <script src="bower_components/angular/angular.js"></script>
@@ -63,5 +55,6 @@
 
     <script src="modules/history-app.js"></script>
     <script src="modules/mockandroll-controller.js"></script>
+    <script src="modules/resource.history.js"></script>
   </body>
 </html>
