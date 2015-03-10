@@ -2,7 +2,8 @@
 
 angular.module('MockAndRollApp')
   .controller('MockAndRollCtl', function ($scope, History) {
-  	History.query()
+  	// ## load
+  	HistoryLog.query()
       .$promise.then(function(data){
       	$scope.history = data;
         console.warn(data);
