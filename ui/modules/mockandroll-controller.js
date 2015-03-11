@@ -2,7 +2,7 @@
 
 angular.module('MockAndRollApp')
   .controller('MockAndRollCtl', function ($scope, History) {
-
+  	// initialize a container to hold the item details	
   	$scope.details = {	}
   	// ## load history data
   	History.query()
@@ -18,10 +18,10 @@ angular.module('MockAndRollApp')
       		// stub
       };
       // ### showDetails
+
       $scope.showDetails = function(item) {
 			  console.log(item);
 			  $scope.detailsVisible = true;
 			  $scope.details = item;
 			};
-
   });
