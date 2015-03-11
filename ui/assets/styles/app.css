@@ -32,8 +32,14 @@ table tr td.headers{
 }
 
 .panel.request-details {
-	margin-top: 24px;
-	overflow: scroll;
-	max-width: 400px;
 	word-wrap: break-word;
+}
+
+.heading {
+	background: #666;
+	color: #eee;
+	margin: 0;
+	padding: 0 5px;
+	font-weight: lighter;
+	letter-spacing: 0.1rem;
 }

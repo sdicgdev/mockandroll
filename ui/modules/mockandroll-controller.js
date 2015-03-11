@@ -12,10 +12,12 @@ angular.module('MockAndRollApp')
       	//copy object to console
         console.warn(data);
       });
+      // ### clear.History
+      // clear out the history
       $scope.clearHistory = function() {
-      		//stub for clearing out the history
+      		// stub
       };
-
+      // ### showDetails
       $scope.showDetails = function(item) {
 			  console.log(item);
 			  $scope.detailsVisible = true;
