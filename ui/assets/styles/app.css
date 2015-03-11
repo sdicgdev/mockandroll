@@ -25,3 +25,7 @@ table tr td.headers{
 .no-margin {
 	margin: 0;
 }
+
+.panel.request-details {
+	margin-top: 24px;
+}
