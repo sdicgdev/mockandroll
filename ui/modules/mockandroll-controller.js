@@ -23,4 +23,5 @@ angular.module('MockAndRollApp')
 			  $scope.detailsVisible = true;
 			  $scope.details = item;
 			};
-  })
+
+  });

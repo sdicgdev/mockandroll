@@ -23,7 +23,13 @@
     <section id="display-history">
       <div class="row">
         <div class="large-4 columns">
-          <button class="button tiny no-margin" ng-click="clearHistory()" disabled>Clear History</button>
+          <button 
+            class="button tiny no-margin" 
+            ng-click="clearHistory()" 
+            disabled
+          >
+          Clear History
+          </button>
           <table>
             <thead>
               <tr>
@@ -31,29 +37,29 @@
                 <th>url</th>
               </tr>
             </thead>
-          <!-- figure out how to load details in sidebar
-            <li ng-repeat="org in subscribedOrgs | orderBy:'org_name'" ng-class="{'deleted' : org.isDeleted == true}">
-              <a href="" ng-click="goto('/org/'+org.org_id+'/users/'+user_id)">{{org.org_name}}</a>
-            </li>
-          -->
-            <tr ng-repeat="item in history" ng-click="showDetails(item)">
+
+            <tr 
+              ng-repeat="item in history"
+              ng-init="isActive = false" 
+              ng-click="showDetails(item); isActive = !isActive" 
+              ng-class="{'': !isActive, 'active': isActive}"         
+            >
               <td>{{item.method}}</td>
               <td>{{item.url}}</td>
             </tr>
           </table>
         </div>
-        <div class="large-8 columns">
-          <div class="heading no-margin">Request Details</div>
-          <div class="panel request-details">
-            <div ng-show="detailsVisible">
+        <div ng-show="detailsVisible">
+          <div class="large-8 columns">
+            <div class="heading no-margin">Request Details</div>
+            <div class="panel request-details">
               <h5>Headers</h5>
               <p>{{details.headers}}</p>
               <h5>Body</h5>
               <p>{{details.body}}</p>
               <h5>Query String</h5>
-              <p>{{details.query_string}}</p>
+              <p>{{details.query_string}}</p>              
             </div>
-
           </div>
         </div>
       </div>

@@ -7,7 +7,12 @@ table {
 }
 table tr{
 	cursor: pointer; 
-	
+}
+table tr.active {
+	background: #333;
+}
+table tr.active td{
+	color: #fff;
 }
 table tr td{
 	font-size: 12px;
