@@ -2,6 +2,8 @@
 
 angular.module('MockAndRollApp')
   .controller('MockAndRollCtl', function ($scope, History) {
+
+  	$scope.details = {	}
   	// ## load history data
   	History.query()
       .$promise.then(function(data){
@@ -13,4 +15,10 @@ angular.module('MockAndRollApp')
       $scope.clearHistory = function() {
       		//stub for clearing out the history
       };
+
+      $scope.showDetails = function(item) {
+			  console.log(item);
+			  $scope.detailsVisible = true;
+			  $scope.details = item;
+			};
   })

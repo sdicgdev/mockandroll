@@ -2,14 +2,19 @@
 body {
 	background: #f9f9f9;
 }
+table {
+	width: 100%;
+}
+table tr{
+	cursor: pointer; 
+	
+}
 table tr td{
 	font-size: 12px;
 }
 
 table tr td.body {
-	overflow: scroll;
-	max-width: 400px;
-	word-wrap: break-word;
+	
 }
 table tr td.headers{
 	overflow: scroll;
@@ -28,4 +33,7 @@ table tr td.headers{
 
 .panel.request-details {
 	margin-top: 24px;
+	overflow: scroll;
+	max-width: 400px;
+	word-wrap: break-word;
 }
