@@ -40,7 +40,6 @@
 
             <tr 
               ng-repeat="item in history"
-              ng-init="selected === null" 
               ng-click="showDetails(item); select($index) " 
               ng-class="{ active: $index == selected}"        
             >
