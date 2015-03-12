@@ -1,0 +1,83 @@
+/*custom styles*/
+* {
+	color: #666;
+}
+body {
+	background: #f9f9f9;
+	color: #666;
+}
+table {
+	width: 100%;
+}
+table thead tr,
+table thead tr:hover{ 
+	background: #666;
+}
+
+table thead tr th{ 
+	color: #fff;
+	font-weight: lighter;
+	letter-spacing: 0.1rem;
+	font-size: 16px;
+}
+table tr{
+	cursor: pointer; 
+}
+table tr:hover {
+	background: #D8F1F9;
+}
+
+table tr.active,
+table tr.active:hover {
+	background: #007196;
+}
+table tr.active td{
+	color: #fff;
+}
+table tr td{
+	font-size: 12px;
+}
+
+table tr td.body {
+	
+}
+table tr td.headers{
+	overflow: scroll;
+	max-width: 400px;
+	word-wrap: break-word;
+}
+.button {
+	outline: 0;
+}
+.button.tiny {
+	padding: 4px 8px; 
+}
+.no-margin {
+	margin: 0;
+}
+
+.panel.request-details {
+	word-wrap: break-word;
+	background: #fff;
+}
+
+.panel.request-details h6{
+	color: #666;
+}
+.panel.request-details p{
+	font-size: 10px;
+}
+
+.heading {
+	background: #666;
+	color: #eee;
+	margin: 0;
+	padding: 0 22px;
+	font-weight: lighter;
+	letter-spacing: 0.1rem;
+	margin-top: 25px;
+	height: 37px;
+	line-height: 37px;
+}
+
+
