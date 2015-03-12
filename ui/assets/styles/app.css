@@ -12,6 +12,7 @@ table thead tr th{
 	color: #fff;
 	font-weight: lighter;
 	letter-spacing: 0.1rem;
+	font-size: 16px;
 }
 table tr{
 	cursor: pointer; 
@@ -46,6 +47,7 @@ table tr td.headers{
 
 .panel.request-details {
 	word-wrap: break-word;
+	background: #fff;
 }
 
 .panel.request-details p{
