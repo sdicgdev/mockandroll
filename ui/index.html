@@ -40,7 +40,7 @@
 
             <tr 
               ng-repeat="item in history"
-              ng-click="showDetails(item); select($index) " 
+              ng-click="displayDetails(item, $index)" 
               ng-class="{ active: $index == selected}"        
             >
               <td>{{item.method}}</td>
@@ -48,7 +48,7 @@
             </tr>
           </table>
         </div>
-        <div ng-show="detailsVisible">
+        <div ng-show="details.method">
           <div class="large-8 columns">
             <div class="heading no-margin">Request Details</div>
             <div class="panel request-details">
