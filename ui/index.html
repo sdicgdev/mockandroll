@@ -15,36 +15,52 @@
     ng-controller="MockAndRollCtl"
     ng-app="MockAndRollApp"
   >
-    
+    <div class="row">
+      <div class="large-12 columns">
+        <h4>History Log</h4>
+      </div>
+    </div>
     <section id="display-history">
       <div class="row">
-        <div class="large-12 columns">
-          <h2>history log </h2>
-          <button class="button tiny no-margin" ng-click="clearHistory()" disabled>Clear History</button> (coming soon)
+        <div class="large-4 columns">
+          <button 
+            class="button tiny no-margin" 
+            ng-click="clearHistory()" 
+            disabled
+          >
+          Clear History
+          </button>
           <table>
             <thead>
               <tr>
-                <th>url</th>
-                <th>method</th>
-                <th>headers</th>
-                <th>body</th>
-                <th>query</th>
-                <!-- <th>hash key</th> -->
+                <th>Method</th>
+                <th>URL</th>
               </tr>
             </thead>
-            <tr ng-repeat="item in history">
-              <!-- <td>{{item}}</td> -->
-              <td>{{item.url}}</td>
+
+            <tr 
+              ng-repeat="item in history"
+              ng-init="selected === null" 
+              ng-click="showDetails(item); select($index) " 
+              ng-class="{ active: $index == selected}"        
+            >
               <td>{{item.method}}</td>
-              <td class="headers">{{item.headers}}</td>
-              <td class="body">
-                <button class="button tiny no-margin" ng-click="showBody = !showBody">Show</button>
-                <span ng-show="showBody">{{item.body}}</span>
-              </td>
-              <td>{{item.query_string}}</td>
-              <!-- <td>{{item.$$hashKey}}</td> -->
+              <td>{{item.url}}</td>
             </tr>
           </table>
+        </div>
+        <div ng-show="detailsVisible">
+          <div class="large-8 columns">
+            <div class="heading no-margin">Request Details</div>
+            <div class="panel request-details">
+              <h6>Headers</h6>
+              <p>{{details.headers}}</p>
+              <h6>Body</h6>
+              <p>{{details.body}}</p>
+              <h6>Query String</h6>
+              <p>{{details.query_string}}</p>              
+            </div>
+          </div>
         </div>
       </div>
     </section>

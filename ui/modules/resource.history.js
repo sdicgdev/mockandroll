@@ -1,4 +1,5 @@
 // # History Resource #
+// prepare to load history into app via json
 'use strict';
 
 angular.module('MockAndRollApp')
