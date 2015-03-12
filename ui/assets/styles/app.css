@@ -5,11 +5,19 @@ body {
 table {
 	width: 100%;
 }
+table thead tr{ 
+	background: #666;
+}
+table thead tr th{ 
+	color: #fff;
+	font-weight: lighter;
+	letter-spacing: 0.1rem;
+}
 table tr{
 	cursor: pointer; 
 }
 table tr.active {
-	background: #333;
+	background: #008CBA;
 }
 table tr.active td{
 	color: #fff;
@@ -40,11 +48,18 @@ table tr td.headers{
 	word-wrap: break-word;
 }
 
+.panel.request-details p{
+	font-size: 10px;
+}
+
 .heading {
 	background: #666;
 	color: #eee;
 	margin: 0;
-	padding: 0 5px;
+	padding: 0 22px;
 	font-weight: lighter;
 	letter-spacing: 0.1rem;
+	margin-top: 25px;
+	height: 37px;
+	line-height: 37px;
 }
