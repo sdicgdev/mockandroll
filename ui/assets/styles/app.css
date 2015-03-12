@@ -9,9 +9,11 @@ body {
 table {
 	width: 100%;
 }
-table thead tr{ 
+table thead tr,
+table thead tr:hover{ 
 	background: #666;
 }
+
 table thead tr th{ 
 	color: #fff;
 	font-weight: lighter;
@@ -21,8 +23,13 @@ table thead tr th{
 table tr{
 	cursor: pointer; 
 }
-table tr.active {
-	background: #008CBA;
+table tr:hover {
+	background: #D8F1F9;
+}
+
+table tr.active,
+table tr.active:hover {
+	background: #007196;
 }
 table tr.active td{
 	color: #fff;
@@ -72,3 +79,5 @@ table tr td.headers{
 	height: 37px;
 	line-height: 37px;
 }
+
+
