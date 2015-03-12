@@ -3,7 +3,6 @@
 angular.module('MockAndRollApp')
   .controller('MockAndRollCtl', function ($scope, History) {
   	// initialize a container to hold the item details	
-  	$scope.details = {	}
   	// ## load history data
   	History.query()
       .$promise.then(function(data){
@@ -18,15 +17,20 @@ angular.module('MockAndRollApp')
       		// stub
       };
       // ### showDetails
-      // pushes the selected items details into the details panel for display
-      $scope.showDetails = function(item) {
+
+      $scope.displayDetails  = function(item, index){
+        showDetails(item);
+        select(index);
+      }
+
+      /*** private methods ***/
+
+      function showDetails(item) {
 			  console.log(item);
-			  $scope.detailsVisible = true;
 			  $scope.details = item;
 			};
-			// ### select
-			// highlights the selected history item
-    	$scope.select= function(index) {
+
+    	function select(index) {
         $scope.selected = index; 
     	};
   });
