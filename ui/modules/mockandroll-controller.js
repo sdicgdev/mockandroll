@@ -18,13 +18,14 @@ angular.module('MockAndRollApp')
       		// stub
       };
       // ### showDetails
-
+      // pushes the selected items details into the details panel for display
       $scope.showDetails = function(item) {
 			  console.log(item);
 			  $scope.detailsVisible = true;
 			  $scope.details = item;
 			};
-
+			// ### select
+			// highlights the selected history item
     	$scope.select= function(index) {
         $scope.selected = index; 
     	};
