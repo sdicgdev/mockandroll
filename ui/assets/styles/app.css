@@ -1,6 +1,10 @@
 /*custom styles*/
+* {
+	color: #666;
+}
 body {
 	background: #f9f9f9;
+	color: #666;
 }
 table {
 	width: 100%;
@@ -50,6 +54,9 @@ table tr td.headers{
 	background: #fff;
 }
 
+.panel.request-details h6{
+	color: #666;
+}
 .panel.request-details p{
 	font-size: 10px;
 }

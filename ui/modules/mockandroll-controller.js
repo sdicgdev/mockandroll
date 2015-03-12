@@ -24,4 +24,8 @@ angular.module('MockAndRollApp')
 			  $scope.detailsVisible = true;
 			  $scope.details = item;
 			};
+
+    	$scope.select= function(index) {
+        $scope.selected = index; 
+    	};
   });

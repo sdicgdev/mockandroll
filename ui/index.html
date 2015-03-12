@@ -40,9 +40,9 @@
 
             <tr 
               ng-repeat="item in history"
-              ng-init="isActive = false" 
-              ng-click="showDetails(item); isActive = !isActive" 
-              ng-class="{'': !isActive, 'active': isActive}"         
+              ng-init="selected === null" 
+              ng-click="showDetails(item); select($index) " 
+              ng-class="{ active: $index == selected}"        
             >
               <td>{{item.method}}</td>
               <td>{{item.url}}</td>
