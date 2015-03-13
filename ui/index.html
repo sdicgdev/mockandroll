@@ -53,10 +53,9 @@
               </thead>
 
               <tr 
-                ng-repeat="item in history"
-                ng-init="selected === null" 
-                ng-click="showDetails(item); select($index) " 
-                ng-class="{ active: $index == selected}"        
+              ng-repeat="item in history"
+              ng-click="displayDetails(item, $index)" 
+              ng-class="{ active: $index == selected}"        
               >
                 <td>{{item.method}}</td>
                 <td>{{item.url}}</td>
