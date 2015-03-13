@@ -54,11 +54,11 @@
             <div class="heading no-margin">Request Details</div>
             <div class="panel request-details">
               <h6>Headers</h6>
-              <p>{{details.headers}}</p>
+              <p><pre>{{details.headers | json}}</pre></p>
               <h6>Body</h6>
-              <p>{{details.body}}</p>
+              <p><pre>{{details.body | json}}</pre></p>
               <h6>Query String</h6>
-              <p>{{details.query_string}}</p>              
+              <p><pre>{{details.query_string | json}}</pre></p>              
             </div>
           </div>
         </div>
