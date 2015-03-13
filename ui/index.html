@@ -43,24 +43,26 @@
           >
           Clear History
           </button>
-          <table>
-            <thead>
-              <tr>
-                <th>Method</th>
-                <th>URL</th>
-              </tr>
-            </thead>
+          <div class="table-block">
+            <table>
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>URL</th>
+                </tr>
+              </thead>
 
-            <tr 
-              ng-repeat="item in history"
-              ng-init="selected === null" 
-              ng-click="showDetails(item); select($index) " 
-              ng-class="{ active: $index == selected}"        
-            >
-              <td>{{item.method}}</td>
-              <td>{{item.url}}</td>
-            </tr>
-          </table>
+              <tr 
+                ng-repeat="item in history"
+                ng-init="selected === null" 
+                ng-click="showDetails(item); select($index) " 
+                ng-class="{ active: $index == selected}"        
+              >
+                <td>{{item.method}}</td>
+                <td>{{item.url}}</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div ng-show="detailsVisible">
           <div class="large-8 columns">
