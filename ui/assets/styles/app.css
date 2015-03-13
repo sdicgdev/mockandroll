@@ -6,8 +6,14 @@ body {
 	background: #f9f9f9;
 	color: #666;
 }
+.title {
+	font-size: 30px;
+	font-weight: lighter;
+	letter-spacing: 0.1rem;
+}
 table {
 	width: 100%;
+	border-radius: 0 0 3px 3px;
 }
 table thead tr,
 table thead tr:hover{ 
@@ -59,6 +65,7 @@ table tr td.headers{
 .panel.request-details {
 	word-wrap: break-word;
 	background: #fff;
+	border-radius: 0 0 3px 3px;
 }
 
 .panel.request-details h6{
@@ -80,7 +87,40 @@ table tr td.headers{
 	line-height: 37px;
 }
 
-pre {
-	font-size: 10px;
+.json-block {
+	background: #F9F9F9 !important;
+	border-radius: 3px;
 }
 
+.json-formatter-row .key {
+	color: #05D3ED !important;
+}
+
+#footer {
+	font-size: 12px;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 20px; /* choose any height */
+	line-height: 20px;
+	background: #222;
+	color: #fff;
+}
+
+#footer a{
+	color: #ddd;
+}
+
+.credit {
+	font-size: 10px;
+	color: #999;
+}
+
+.github-banner {
+	position: absolute; 
+	top: 0; 
+	right: 0; 
+	border: 0; 
+	z-index: 100
+}
