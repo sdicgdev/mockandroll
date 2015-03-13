@@ -10,6 +10,7 @@ body {
 	font-size: 30px;
 	font-weight: lighter;
 	letter-spacing: 0.1rem;
+	border-bottom: 3px dashed #eee;
 }
 table {
 	width: 100%;
@@ -65,7 +66,6 @@ table tr td.headers{
 .panel.request-details {
 	word-wrap: break-word;
 	background: #fff;
-	border-radius: 0 0 3px 3px;
 }
 
 .panel.request-details h6{
@@ -93,7 +93,7 @@ table tr td.headers{
 }
 
 .json-formatter-row .key {
-	color: #05D3ED !important;
+	color: #009EFF !important;
 }
 
 #footer {

@@ -33,6 +33,7 @@
         </div>
       </div>
     </section>
+
     <section id="display-history">
       <div class="row">
         <div class="large-4 columns">
@@ -43,27 +44,25 @@
           >
           Clear History
           </button>
-          <div class="table-block">
-            <table>
-              <thead>
-                <tr>
-                  <th>Method</th>
-                  <th>URL</th>
-                </tr>
-              </thead>
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>URL</th>
+              </tr>
+            </thead>
 
-              <tr 
+            <tr 
               ng-repeat="item in history"
               ng-click="displayDetails(item, $index)" 
               ng-class="{ active: $index == selected}"        
-              >
-                <td>{{item.method}}</td>
-                <td>{{item.url}}</td>
-              </tr>
-            </table>
-          </div>
+            >
+              <td>{{item.method}}</td>
+              <td>{{item.url}}</td>
+            </tr>
+          </table>
         </div>
-        <div ng-show="detailsVisible">
+        <div ng-show="details.method">
           <div class="large-8 columns">
             <div class="heading no-margin">Request Details</div>
             <div class="panel request-details">
