@@ -2,7 +2,7 @@
 
 angular.module('MockAndRollApp')
   .controller('MockAndRollCtl', function ($scope, History) {
-    // initialize a container to hold the item details  
+  	$scope.instructions	= true;
     // ## load history data
     History.query()
       .$promise.then(function(data){
@@ -14,13 +14,16 @@ angular.module('MockAndRollApp')
       // ### clear.History
       // clear out the history
       $scope.clearHistory = function() {
-          // stub
+        $promise.then(function(data){
+	        $scope.history = [ ];
+      	});
       };
       // ### showDetails
 
       $scope.displayDetails  = function(item, index){
         showDetails(item);
         select(index);
+        $scope.instructions	= false;
       }
 
       /*** private methods ***/
