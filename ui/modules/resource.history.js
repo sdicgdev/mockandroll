@@ -7,8 +7,6 @@ angular.module('MockAndRollApp')
     return $resource('/ui/mock-service/history.json', {}, {
     	// reset the list of groups a user is affiliated with for a particular organization
         clearHistory:
-        {method: 'GET', url: '/__log/reset'},
-    
+        {method: 'GET', url: '/__log/reset'}
     });
-
   });
