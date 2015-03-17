@@ -14,7 +14,9 @@ angular.module('MockAndRollApp')
       // ### clear.History
       // clear out the history
       $scope.clearHistory = function() {
-          // stub
+        $promise.then(function(data){
+	        $scope.history = [ ];
+      	});
       };
       // ### showDetails
 
