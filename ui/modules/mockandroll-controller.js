@@ -17,7 +17,11 @@ angular.module('MockAndRollApp')
       $scope.clearHistory = function() {
         $promise.then(function(data){
 	        $scope.history = [ ];
+	        $scope.reset = true;
+	        $scope.details.method = false;
       	});
+  			// $scope.reset = true;
+	     	//$scope.details.method = false;
       };
       // ### showDetails
 
