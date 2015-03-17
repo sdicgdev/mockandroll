@@ -2,7 +2,7 @@
 
 angular.module('MockAndRollApp')
   .controller('MockAndRollCtl', function ($scope, History) {
-    // initialize a container to hold the item details  
+  	$scope.instructions	= true;
     // ## load history data
     History.query()
       .$promise.then(function(data){
@@ -23,6 +23,7 @@ angular.module('MockAndRollApp')
       $scope.displayDetails  = function(item, index){
         showDetails(item);
         select(index);
+        $scope.instructions	= false;
       }
 
       /*** private methods ***/

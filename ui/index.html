@@ -33,7 +33,7 @@
         </div>
       </div>
     </section>
-
+    
     <section id="display-history">
       <div class="row">
         <div class="large-4 columns">
@@ -61,6 +61,17 @@
             </tr>
           </table>
         </div>
+        <section ng-show="instructions">
+          <div class="large-8 columns">
+            <div class="panel instructions">
+              <ol>
+                <li>Select an item from the list to view its details.</li>
+                <li>Click the arrows to expand/contract nodes in JSON tree.</li>
+                <li>To reset the history log, click the "Clear History" button.</li>
+              </ol>
+              <!-- Select an item from the list to view details. <br> Then click the arrows to expand/contract nodes in JSON tree. --></div>
+          </div>
+        </section>
         <div ng-show="details.method">
           <div class="large-8 columns">
             <div class="heading no-margin">Request Details</div>

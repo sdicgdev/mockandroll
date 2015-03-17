@@ -98,7 +98,6 @@ table tr td.headers{
 
 #footer {
 	font-size: 12px;
-	text-align: center;
 	position: fixed;
 	bottom: 0;
 	width: 100%;
@@ -123,4 +122,12 @@ table tr td.headers{
 	right: 0; 
 	border: 0; 
 	z-index: 100
+}
+
+.panel.instructions {
+	background: #fff;
+	margin-top: 24px;
+	font-weight: lighter;
+	letter-spacing: 0.1rem;
+	font-size: 20px;
 }
