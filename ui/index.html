@@ -1,13 +1,19 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Mock And Roll History</title>
+    <meta name="description" content="">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 
     <!-- feature detection -->
     <script src="bower_components/foundation/js/vendor/modernizr.js"></script>
     
     <link rel="stylesheet" href="bower_components/foundation/css/normalize.css">
     <link rel="stylesheet" href="bower_components/foundation/css/foundation.css">
+    <link rel="stylesheet" href="bower_components/json-formatter/dist/json-formatter.css">
 
     <link rel="stylesheet" href="assets/styles/app.css">
   </head>
@@ -15,11 +21,19 @@
     ng-controller="MockAndRollCtl"
     ng-app="MockAndRollApp"
   >
-    <div class="row">
-      <div class="large-12 columns">
-        <h4>History Log</h4>
+
+    <!-- github banner -->
+    <a href="https://github.com/sdicgdev/mockandroll"><img class="github-banner" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" title="Mock and Roll allows developers to mock services and analyze their traffic."></a>
+
+    <!-- begin content -->
+    <section class="header">
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="title">//History Log</div>
+        </div>
       </div>
-    </div>
+    </section>
+
     <section id="display-history">
       <div class="row">
         <div class="large-4 columns">
@@ -53,20 +67,36 @@
             <div class="heading no-margin">Request Details</div>
             <div class="panel request-details">
               <h6>Headers</h6>
-              <p>{{details.headers}}</p>
+              <div class="json-block">
+                <json-formatter open="1" json="details.headers"></json-formatter>
+              </div>
+              <hr>
               <h6>Body</h6>
-              <p>{{details.body}}</p>
+              <div class="json-block">
+                <json-formatter open="2" json="details.body"></json-formatter>
+              </div>
+              <hr>
               <h6>Query String</h6>
-              <p>{{details.query_string}}</p>              
+              <div class="json-block">
+                <json-formatter open="1" json="details.query"></json-formatter>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <footer id="footer">
+      <div class="row">
+        <div class="large-12 columns">
+          <a href="https://github.com/sdicgdev/mockandroll" target="_blank"><span class="credit"><i>Mock and Roll</i> | Mock Service Diagnostic Tool | &copy;2015 School Datebooks, Inc.</span></a>
+        </div>
+      </div>
+    </footer>
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-foundation/mm-foundation-tpls.js"></script>
+    <script src="bower_components/json-formatter/dist/json-formatter.js"></script>
 
     <script src="modules/history-app.js"></script>
     <script src="modules/mockandroll-controller.js"></script>
