@@ -31,7 +31,7 @@
     <section class="header">
       <div class="row">
         <div class="large-12 columns">
-          <div class="title"><img src="/__log/assets/images/logo.png" alt=""> History Log</div>
+          <div class="title"><a href="/__log/"><img src="/__log/assets/images/logo.png" alt=""></a> History Log</div>
         </div>
       </div>
     </section>
@@ -76,15 +76,11 @@
           </div>
         </section>
 
-        <section ng-show="reset">
-          <div class="large-8 columns">
-            <div class="panel instructions">
-              <ul>
-                <li><i>History Cleared.</i> <b>Mock on...</b></li>
-              </ul>
-            </div>
+        <div class="large-8 columns" ng-show="reset">
+          <div class="panel instructions">
+            <b>History Log Cleared.</b> Mock on...
           </div>
-        </section>  
+        </div>
 
         <div ng-show="details.method">
           <div class="large-8 columns">
