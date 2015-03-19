@@ -22,6 +22,7 @@ module.exports = function(yml_file, port, log_loc){
       .then(function(files){
         deleteThese(log_loc, files)
           .then(function(message){
+            console.log(message);
             response.end(message);
             next();
           })
@@ -55,12 +56,14 @@ module.exports = function(yml_file, port, log_loc){
 
   app.use('/__log/', function(req, response, next){
     if(req.url && req.url.match(/__log\/history\/?$/)){
-      history(req, response, next);
-    }else if(req.url && req.url.match('reset')){
-      reset(req, response, next);
+      if(req.method == "GET"){
+        history(req, response, next);
+      }
+      if(req.method == "DELETE"){
+        reset(req, response, next);
+      }
     }else{
       var url = req.originalUrl;
-      console.log(url);
       if(url.match(/__log\/?$/)){
         url = url.replace(/\/?$/, '/index.html');
       }
@@ -113,7 +116,7 @@ module.exports = function(yml_file, port, log_loc){
                return deleteThese(loc, files);
              })
              .catch(function(err){
-               return 'the log has been cleared';
+               return '[]';
              })
   }
 }

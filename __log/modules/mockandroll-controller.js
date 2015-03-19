@@ -6,27 +6,31 @@ angular.module('MockAndRollApp')
     // ## load history data
     History.query()
       .$promise.then(function(data){
+        console.log(data);
         //set history records in current scope to returned values
         $scope.history = data;
         //copy object to console
         console.warn(data);
       });
+
       // ### clear.History
       // clear out the history
       $scope.clearHistory = function() {
-        $promise.then(function(data){
-	        $scope.history = [ ];
-      	});
+        History.clearHistory()
+          .$promise.then(function(data){
+            //set history records in current scope to returned values
+            $scope.history = data;
+          });
       };
-      // ### showDetails
 
+      // ### showDetails
       $scope.displayDetails  = function(item, index){
         showDetails(item);
         select(index);
         $scope.instructions	= false;
       }
 
-      /*** private methods ***/
+      // ## private methods
 
       function showDetails(item) {
         console.log(item);

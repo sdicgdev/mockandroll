@@ -10,4 +10,4 @@
     method: DELETE
   response:
     status: 200
-    file: "fixtures/empty_history.json.json"
+    file: "fixtures/empty_history.json"
