@@ -27,6 +27,7 @@
     "q-io": "^1.11.6",
     "underscore": "^1.7.0",
     "apimock-middleware": "0.0.4",
-    "confoo": "0.0.7"
+    "confoo": "0.0.7",
+    "serve-static": "~1.9.2"
   }
 }
