@@ -14,7 +14,6 @@ console.log("start");
 config
   .get('mock-services.json', default_settings)
   .catch(function(err){
-    console.log(err);
     return default_settings
   })
   .then(function(conf){

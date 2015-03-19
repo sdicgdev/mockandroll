@@ -1,13 +1,13 @@
 - request:
-    url: /api/users/:id.json
+    url: /__log/history
     method: GET
   response:
     status: 200
-    file: "fixtures/<%= params.id %>.json"
+    file: "fixtures/full_history.json"
 
 - request:
-    url: /api/users
-    method: POST
+    url: /__log/history
+    method: DELETE
   response:
-    status: "<%= body.name ? 201 : 422 %>"
-    file: "fixtures/<%= body.name %>.json"
+    status: 200
+    file: "fixtures/empty_history.json"
