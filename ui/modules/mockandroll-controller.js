@@ -3,6 +3,7 @@
 angular.module('MockAndRollApp')
   .controller('MockAndRollCtl', function ($scope, History) {
   	$scope.instructions	= true;
+  	$scope.reset	= false;
     // ## load history data
     History.query()
       .$promise.then(function(data){
@@ -16,7 +17,11 @@ angular.module('MockAndRollApp')
       $scope.clearHistory = function() {
         $promise.then(function(data){
 	        $scope.history = [ ];
+	        $scope.reset = true;
+	        $scope.details.method = false;
       	});
+  			// $scope.reset = true;
+	     	//$scope.details.method = false;
       };
       // ### showDetails
 

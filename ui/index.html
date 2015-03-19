@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-
+    
     <!-- feature detection -->
     <script src="bower_components/foundation/js/vendor/modernizr.js"></script>
     
@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="bower_components/json-formatter/dist/json-formatter.css">
 
     <link rel="stylesheet" href="assets/styles/app.css">
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=1" />
   </head>
   <body
     ng-controller="MockAndRollCtl"
@@ -29,7 +31,7 @@
     <section class="header">
       <div class="row">
         <div class="large-12 columns">
-          <div class="title">//History Log</div>
+          <div class="title"><img src="assets/images/logo.png" alt=""> History Log</div>
         </div>
       </div>
     </section>
@@ -61,6 +63,7 @@
             </tr>
           </table>
         </div>
+
         <section ng-show="instructions">
           <div class="large-8 columns">
             <div class="panel instructions">
@@ -69,9 +72,20 @@
                 <li>Click the arrows to expand/contract nodes in JSON tree.</li>
                 <li>To start over, click the "Clear History" button.</li>
               </ol>
-              <!-- Select an item from the list to view details. <br> Then click the arrows to expand/contract nodes in JSON tree. --></div>
+            </div>
           </div>
         </section>
+
+        <section ng-show="reset">
+          <div class="large-8 columns">
+            <div class="panel instructions">
+              <ul>
+                <li>History Cleared</li>
+              </ul>
+            </div>
+          </div>
+        </section>  
+
         <div ng-show="details.method">
           <div class="large-8 columns">
             <div class="heading no-margin">Request Details</div>
