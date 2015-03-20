@@ -55,7 +55,7 @@ module.exports = function(yml_file, port, log_loc){
   }
 
   app.use('/__log/', function(req, response, next){
-    if(req.url && req.url.match(/__log\/history\/?$/)){
+    if(req.url && req.url.match(/\/history\/?$/)){
       if(req.method == "GET"){
         history(req, response, next);
       }
