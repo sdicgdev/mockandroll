@@ -63,17 +63,18 @@ module.exports = function(yml_file, port, log_loc){
         reset(req, response, next);
       }
     }else{
-      var url = req.originalUrl;
+      var url = req.originalUrl
+        ;
       if(url.match(/__log\/?$/)){
         url = url.replace(/\/?$/, '/index.html');
       }
-      if(url.match(/\.css$/)){
-        response.setHeader('Content-Type', 'text/css');
+      if(url.match(/\.ico/)){
+        response.setHeader('Content-Type', 'image/x-icon');
       }
       if(url.match(/\.js$/)){
         response.setHeader('Content-Type', 'text/javascript');
       }
-      fs.read(__dirname+url)
+      fs.read(__dirname+url.replace(/\?.*$/, ''))
         .then(function(file){
           response.end(file);
           next();
