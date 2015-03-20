@@ -4,6 +4,7 @@ var connect    = require('connect');
 var bodyParser = require('body-parser');
 var apimock    = require('apimock-middleware');
 var requestlog = require('./lib/apiReporter-middleware');
+var serveStatic = require('serve-static')
 
 module.exports = function(yml_file, port, log_loc){
   var app = connect();
@@ -12,14 +13,16 @@ module.exports = function(yml_file, port, log_loc){
   app.use(bodyParser.json());
   app.use(requestlog(log_loc));
   app.use(apimock(yml_file));
+
   function reset(req, response, next){
     fs.list(log_loc)
       .catch(function(err){
-        console.log(err);
+        console.log(err.stack);
       })
       .then(function(files){
         deleteThese(log_loc, files)
           .then(function(message){
+            console.log(message);
             response.end(message);
             next();
           })
@@ -35,6 +38,7 @@ module.exports = function(yml_file, port, log_loc){
     fs.list(log_loc)
       .catch(function(err){
         console.log(err);
+        console.log(err.stack);
         next();
       })
       .then(function(files){
@@ -51,12 +55,26 @@ module.exports = function(yml_file, port, log_loc){
   }
 
   app.use('/__log/', function(req, response, next){
-    if(req.url && req.url.match('history')){
-      history(req, response, next);
-    }else if(req.url && req.url.match('reset')){
-      reset(req, response, next);
+    if(req.url && req.url.match(/__log\/history\/?$/)){
+      if(req.method == "GET"){
+        history(req, response, next);
+      }
+      if(req.method == "DELETE"){
+        reset(req, response, next);
+      }
     }else{
-      fs.read(__dirname+'/lib/log-history.html')
+      var url = req.originalUrl
+        ;
+      if(url.match(/__log\/?$/)){
+        url = url.replace(/\/?$/, '/index.html');
+      }
+      if(url.match(/\.ico/)){
+        response.setHeader('Content-Type', 'image/x-icon');
+      }
+      if(url.match(/\.js$/)){
+        response.setHeader('Content-Type', 'text/javascript');
+      }
+      fs.read(__dirname+url.replace(/\?.*$/, ''))
         .then(function(file){
           response.end(file);
           next();
@@ -99,7 +117,7 @@ module.exports = function(yml_file, port, log_loc){
                return deleteThese(loc, files);
              })
              .catch(function(err){
-               return 'the log has been cleared';
+               return '[]';
              })
   }
 }

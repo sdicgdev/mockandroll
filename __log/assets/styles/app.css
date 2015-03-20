@@ -1,0 +1,145 @@
+/*custom styles*/
+* {
+	color: #666;
+}
+body {
+	background: #f9f9f9;
+	color: #666;
+}
+.title {
+	font-size: 30px;
+	font-weight: lighter;
+	letter-spacing: 0.1rem;
+	border-bottom: 3px dashed #eee;
+}
+table {
+	width: 100%;
+	border-radius: 0 0 3px 3px;
+}
+table thead tr,
+table thead tr:hover{ 
+	background: #666;
+}
+
+table thead tr th{ 
+	color: #fff;
+	font-weight: lighter;
+	letter-spacing: 0.1rem;
+	font-size: 16px;
+}
+table tr{
+	cursor: pointer; 
+}
+table tr:hover {
+	background: #D8F1F9;
+}
+
+table tr.active,
+table tr.active:hover {
+	background: #007196;
+}
+table tr.active td{
+	color: #fff;
+}
+table tr td{
+	font-size: 12px;
+}
+
+table tr td.body {
+	
+}
+table tr td.headers{
+	overflow: scroll;
+	max-width: 400px;
+	word-wrap: break-word;
+}
+.button {
+	outline: 0;
+}
+.button.tiny {
+	padding: 4px 8px; 
+}
+.no-margin {
+	margin: 0;
+}
+
+.panel.request-details {
+	word-wrap: break-word;
+	background: #fff;
+}
+
+.panel.request-details h6{
+	color: #666;
+}
+.panel.request-details p{
+	font-size: 10px;
+}
+
+.heading {
+	background: #666;
+	color: #eee;
+	margin: 0;
+	padding: 0 22px;
+	font-weight: lighter;
+	letter-spacing: 0.1rem;
+	margin-top: 25px;
+	height: 37px;
+	line-height: 37px;
+}
+
+.json-block {
+	background: #F9F9F9 !important;
+	border-radius: 3px;
+}
+
+.json-formatter-row .key {
+	color: #009EFF !important;
+}
+
+#footer {
+	font-size: 12px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 20px; /* choose any height */
+	line-height: 20px;
+	background: #222;
+	color: #fff;
+}
+
+#footer a{
+	color: #ddd;
+}
+
+.credit {
+	font-size: 10px;
+	color: #999;
+}
+
+.github-banner {
+	position: absolute; 
+	top: 0; 
+	right: 0; 
+	border: 0; 
+	z-index: 100
+}
+
+.panel.instructions {
+	background: #fff;
+	margin-top: 24px;
+	font-weight: lighter;
+	letter-spacing: 0.1rem;
+	font-size: 20px;
+}
+
+.panel.instructions ul { 
+	list-style: none;
+}
+
+
+
+
+
+
+
+
